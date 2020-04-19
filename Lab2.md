@@ -77,9 +77,11 @@ switch over to the other service.
 The code for the proxy is available in the `ZeroDowntimeProxy`
 [project](ZeroDowntimeProxy). The service fully mimics the interface of the
 `GreeterService`. However, it always forwards the requests to either
-`https://localhost:8081` or `https://localhost:8082`. It uses
+`https://localhost:8081` or `https://localhost:8082`. This code is found in the
+`Services\GreeterService.cs`. The project uses
 [Polly](https://github.com/App-vNext/Polly) to create a circuit breaker policy,
-which simplifies the switching between the other servers.
+which simplifies the switching between the other servers. This policy is found
+in `MyPolicy.cs`.
 
 <p align="center">
 <img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
