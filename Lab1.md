@@ -19,16 +19,16 @@ have a server and that's about it.
 
 ## Start the server
 
-Open a powershell window and go into the folder `artifacts`.
+Open a powershell window and go into the `artifacts` folder.
 
 ```powershell
 > .\GreeterService.exe --urls=https://localhost:8080 --greeting=Hiya
 ```
 
 This should start a server on the local computer available at port `8080`. The
-code for this is available in the `ZeroDowntimeExample` project. The
-`--greeting=Hiya` configures our service to respond to any request with "Hiya"
-instead of "Hello".
+code for this is available in the `ZeroDowntimeExample`
+[project](ZeroDowntimeExample). The `--greeting=Hiya` configures our service to
+respond to any request with "Hiya" instead of "Hello".
 
 ## Start the client
 
