@@ -48,9 +48,9 @@ The code for the client can be found in the `ZeroDowntimeClient`
 [project](ZeroDowntimeClient). The most interesing file for this lab is the
 `Program.cs` tab. The only two methods used are `Main()` and `Greet()`.
 
-### Note: Deployment
-
 ![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+
+### Note: Deployment
 
 At this point we can see that we have deployed an application and that it is
 working fine. As long as absolutely positively nothing happens to the
@@ -78,9 +78,9 @@ To do this, stop the currently running server and rerun it with
 Can you do it without the original program crashing? What happens if you do not
 upgrade it within 30 seconds?
 
-### Note: Real World Impact
-
 ![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+
+### Note: Real World Impact
 
 The service in this example is quite simple and not something that is essential
 to anyone but us. However, imagine that this was software that was crucial to
@@ -94,9 +94,9 @@ longer than expected to get up and running? What if it was a crucial piece of
 software for the national defense? Or the police? If something goes wrong, how
 can that be effectively communicated?
 
-### Note: Reverting To The Old Version
-
 ![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+
+### Note: Reverting To The Old Version
 
 Assume we have a much larger application, which takes more time to configure. We
 have tried our best configuring the upgraded version of the app, but we know
@@ -105,9 +105,9 @@ it be to revert to the old version? What if we have already started the upgraded
 version, but found out it was poorly configured, how would we fix the
 configuration with minimal disruption?
 
-### Note: Testing The New Version
-
 ![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+
+### Note: Testing The New Version
 
 Is there a way to test that the application works like it should before we
 deploy it? If we run the application on one port and try it, are we guaranteed
