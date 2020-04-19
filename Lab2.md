@@ -28,7 +28,7 @@ switch is made.
 
 # Lab
 
-## Start the servers
+## Start The Servers
 
 Open two powershell windows and go into the `artifacts` folder.
 
@@ -45,6 +45,8 @@ In the other
 Now we have started two identical services on port `8081` and `8082`. At this
 point we think about them as both being Blue deployments in their current state.
 
+The two services we run are identical to the one we ended up with in Lab 1.
+
 ### Note: Duplication
 
 <p align="center">
@@ -54,5 +56,46 @@ point we think about them as both being Blue deployments in their current state.
 For some applications it can be hard to duplicate a service like this. An
 example of this might be an application that uses [sticky
 sessions](https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-sessions).
-Different applications have different needs, but generally most of them need to
-scale.
+Another service might rely on in-memory data, which cannot easily be pushed to a
+database. Different applications have different needs, but generally most of
+them need to scale. If you want to deploy an application with zero downtime,
+then that application generally needs to be able to run at least two instances at the same time.
+
+## Start The Proxy
+
+Open a powershell window and go into the `artifacts` folder.
+
+```powershell
+> .\GreeterProxy.exe
+```
+
+The proxy will transparently forward a request to one of the GreeterServices.
+Unless that service is unreachable three times in a row it will use the same
+service over and over. Once a service has failed three times, the proxy will
+switch over to the other service.
+
+The code for the proxy is available in the `ZeroDowntimeProxy`
+[project](ZeroDowntimeProxy). The service fully mimics the interface of the
+`GreeterService`. However, it always forwards the requests to either
+`https://localhost:8081` or `https://localhost:8082`. It uses
+[Polly](https://github.com/App-vNext/Polly) to create a circuit breaker policy,
+which simplifies the switching between the other servers.
+
+<p align="center">
+<img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
+</p>
+
+### Note: To Be Transparent Or Not To Be Transparent
+
+In the current implementation the proxy will not reveal any form of exception to
+the client. What are the advantages of keeping the exceptions hidden from the
+client? Would it be possible to somehow make the client aware of the errors? If
+the errors were available at the client, how would this change the client code?
+What possibilities are opened up? From an architecture standpoint, is it best to
+be transparent or not? Is there a clear answer?
+
+## Start The Client
+
+...
+
+
