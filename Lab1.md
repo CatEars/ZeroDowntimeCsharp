@@ -10,7 +10,9 @@ service and experience the pain points of the most basic style of deployment.
 
 # Architecture
 
+<p align="center">
 ![Architecture sketch](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab1-Architecture.PNG)
+</p>
 
 The architecture for this example is extremly simple. We have a client and we
 have a server and that's about it.
@@ -48,7 +50,9 @@ The code for the client can be found in the `ZeroDowntimeClient`
 [project](ZeroDowntimeClient). The most interesing file for this lab is the
 `Program.cs` tab. The only two methods used are `Main()` and `Greet()`.
 
+<p align="center">
 ![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+</p>
 
 ### Note: Deployment
 
@@ -78,7 +82,9 @@ To do this, stop the currently running server and rerun it with
 Can you do it without the original program crashing? What happens if you do not
 upgrade it within 30 seconds?
 
+<p align="center">
 ![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+</p>
 
 ### Note: Real World Impact
 
@@ -94,7 +100,9 @@ longer than expected to get up and running? What if it was a crucial piece of
 software for the national defense? Or the police? If something goes wrong, how
 can that be effectively communicated?
 
+<p align="center">
 ![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+</p>
 
 ### Note: Reverting To The Old Version
 
@@ -105,7 +113,9 @@ it be to revert to the old version? What if we have already started the upgraded
 version, but found out it was poorly configured, how would we fix the
 configuration with minimal disruption?
 
+<p align="center">
 ![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+</p>
 
 ### Note: Testing The New Version
 
