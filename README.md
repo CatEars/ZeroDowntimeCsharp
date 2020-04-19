@@ -88,7 +88,7 @@ consequences of not having a proper deployment strategy.
 In this lab we learn how we can deploy a transparent proxy that will allow us to
 do a Blue Green Deployment. After deploying we will do a Blue Green Deployment.
 
-[Lab 2](./Lab1.md)
+[Lab 2](./Lab2.md)
 
 # Lab 3 - Client Side Failover
 
@@ -96,4 +96,4 @@ In this lab we learn how client software can be built to be more resilient
 against services that suddenly go online. We then use this fact to perform a
 Blue Green Deployment.
 
-[Lab 3](./Lab1.md)
+[Lab 3](./Lab3.md)
