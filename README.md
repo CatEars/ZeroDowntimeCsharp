@@ -75,3 +75,25 @@ Runs like this:
 ```powershell
 > .\GreeterProxy --urls=https://localhost:8080
 ```
+
+# Lab 1 - Basic Service
+
+In this lab we learn what a simple service looks like and we will see the
+consequences of not having a proper deployment strategy.
+
+[Lab 1](./Lab1.md)
+
+# Lab 2 - Service Side Transparent Proxy
+
+In this lab we learn how we can deploy a transparent proxy that will allow us to
+do a Blue Green Deployment. After deploying we will do a Blue Green Deployment.
+
+[Lab 2](./Lab1.md)
+
+# Lab 3 - Client Side Failover
+
+In this lab we learn how client software can be built to be more resilient
+against services that suddenly go online. We then use this fact to perform a
+Blue Green Deployment.
+
+[Lab 3](./Lab1.md)
