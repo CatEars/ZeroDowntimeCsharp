@@ -11,7 +11,7 @@ service and experience the pain points of the most basic style of deployment.
 # Architecture
 
 <p align="center">
-![Architecture sketch](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab1-Architecture.PNG)
+<img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab1-Architecture.PNG" />
 </p>
 
 The architecture for this example is extremly simple. We have a client and we
@@ -51,7 +51,7 @@ The code for the client can be found in the `ZeroDowntimeClient`
 `Program.cs` tab. The only two methods used are `Main()` and `Greet()`.
 
 <p align="center">
-![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+<img alt="Warning" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG" />
 </p>
 
 ### Note: Deployment
@@ -83,7 +83,7 @@ Can you do it without the original program crashing? What happens if you do not
 upgrade it within 30 seconds?
 
 <p align="center">
-![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+<img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
 </p>
 
 ### Note: Real World Impact
@@ -101,7 +101,7 @@ software for the national defense? Or the police? If something goes wrong, how
 can that be effectively communicated?
 
 <p align="center">
-![Warning](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG)
+<img alt="Warning" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG" />
 </p>
 
 ### Note: Reverting To The Old Version
@@ -114,7 +114,7 @@ version, but found out it was poorly configured, how would we fix the
 configuration with minimal disruption?
 
 <p align="center">
-![QuestionMark](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG)
+<img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
 </p>
 
 ### Note: Testing The New Version
