@@ -10,7 +10,7 @@ service and experience the pain points of the most basic style of deployment.
 
 # Architecture
 
-![Architecture sketch](Pictures/Lab1-Architecture.png)
+![Architecture sketch](https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab1-Architecture.PNG)
 
 The architecture for this example is extremly simple. We have a client and we
 have a server and that's about it.
