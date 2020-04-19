@@ -47,11 +47,11 @@ point we think about them as both being Blue deployments in their current state.
 
 The two services we run are identical to the one we ended up with in Lab 1.
 
-### Note: Duplication
-
 <p align="center">
 <img alt="Warning" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG" />
 </p>
+
+### Note: Duplication
 
 For some applications it can be hard to duplicate a service like this. An
 example of this might be an application that uses [sticky
@@ -98,6 +98,59 @@ be transparent or not? Is there a clear answer?
 
 ## Start The Client
 
-...
+Open a powershell window and go into the `artifacts` folder.
 
+```powershell
+> .\GreeterClient.exe
+```
 
+Notice that the client is started in exactly the same way as in Lab 1. This is a
+prerequisite for the proxy to be transparent. The output of the client should
+not be distinguishable from its output in Lab 1 in any meaningful way.
+Obviously, the same code runs on the client as when it was run in Lab 1.
+
+At this point we have the whole system set up and working. We can start our Blue
+Green Deployment.
+
+<p align="center">
+<img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
+</p>
+
+### Note: Idle Service
+
+Right now one of the services should be completely idle. The proxy will only
+send requests to one of the services. This implies that only one of the services
+needs to run normally. What are the effects of running two services? Is more
+energy consumed than normally? How much, compared to running just one service?
+Is it negligible? Assuming we have a proxy similar to ours, is there any issue
+with running only one service? Would we profit from a third service?
+
+## Start An Upgraded Version of the Service
+
+You have received word from your boss that you will need to change the greeting
+yet again. This time you will use the short and simple greeting "Hi". However,
+she has told you that this change cannot disrupt the running business. Luckily,
+you have been smart in your deployment and are set for an easy task.
+
+Start by stopping either of the servers. Try and stop the one the proxy is using
+and witness how it switches over to another service. Also notice how, at the
+client, the only difference is that the request seems to take a little bit
+longer. 
+
+At this point we have the following architecture up and running:
+
+<p align="center">
+<img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-OneOff.PNG" />
+</p>
+
+At this point we need to start our new version of the `GreeterService` which
+says "Hi" instead of "Greetings". If you shut down the server that was using
+port `8081` then run the following:
+
+```powershell
+> .\GreeterService.exe --urls=https://localhost:8081 --greeting=Greetings
+```
+
+else substitue `8081` for `8082`. The server should start without anything
+remarkable happening. The client should continue getting "Greetings" from the
+proxy, which talks to the "old" service.
