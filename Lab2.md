@@ -154,3 +154,22 @@ port `8081` then run the following:
 else substitue `8081` for `8082`. The server should start without anything
 remarkable happening. The client should continue getting "Greetings" from the
 proxy, which talks to the "old" service.
+
+At this point you should have an architecture sketch that looks like this:
+
+<p align="center">
+<img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-BlueGreen.PNG" />
+</p>
+
+<p align="center">
+<img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
+</p>
+
+### Note: Extra Testing
+
+Before making the switch from the old application to the new, is it possible to
+verify that the new version is working correctly? How could a proxy be built so
+that it would take requests sent by you to the new version? Would it be possible
+to send "some" requests to the new version? How would those requests be
+selected? What if this component was part of a long chain of requests, would it
+still be possible to test it before going live?
