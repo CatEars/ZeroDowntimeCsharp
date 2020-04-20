@@ -148,7 +148,7 @@ says "Hi" instead of "Greetings". If you shut down the server that was using
 port `8081` then run the following:
 
 ```powershell
-> .\GreeterService.exe --urls=https://localhost:8081 --greeting=Greetings
+> .\GreeterService.exe --urls=https://localhost:8081 --greeting=Hi
 ```
 
 else substitue `8081` for `8082`. The server should start without anything
@@ -161,6 +161,8 @@ At this point you should have an architecture sketch that looks like this:
 <img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-BlueGreen.PNG" />
 </p>
 
+Server 2 is now a different version than Server 1, symbolized by the Green color.
+
 <p align="center">
 <img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
 </p>
@@ -172,4 +174,50 @@ verify that the new version is working correctly? How could a proxy be built so
 that it would take requests sent by you to the new version? Would it be possible
 to send "some" requests to the new version? How would those requests be
 selected? What if this component was part of a long chain of requests, would it
-still be possible to test it before going live?
+still be possible to test it before going live? Can we automate the process of
+checking that the new service runs correctly?
+
+## Shut Down the Old Service
+
+Now you should shut down the old service, watch both the output from the proxy
+and the client. What does the client notice? What does the proxy notice? How has
+this changed from before?
+
+At this point you should have an architecture sketch that looks like this:
+
+<p align="center">
+<img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-BlueOff.PNG" />
+</p>
+
+<p align="center">
+<img alt="Warning" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG" />
+</p>
+
+### Note: Controlled Failover
+
+In this system we forcefully remove the old service and trust that the proxy
+will eventually make the switch from sending requests to the old version to
+sending them to the new version. Are there ways in which this could be handled
+more gracefully? How could we verify that the old service is no longer in use by
+anyone? Is the strategy different if requests to our service are long lived, say
+2 hours? If we had a method for manually switching which service the proxy
+targets, would there be a benefit in keeping the old version running for a
+longer time before shutting it off?
+
+## Start Another Instance of the New Version
+
+Even if we have failed over and use the new version we want to start a second
+instance of the new version of the service so that we have a resilient service.
+
+Open or reuse a powershell window and navigate to the `artifacts` folder.
+
+```powershell
+> .\GreeterService.exe --urls=https://localhost:8082 --greeting=Hi
+```
+
+This should start the second service and we should be running the following
+architecture:
+
+<p align="center">
+<img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-Finished.PNG" />
+</p>
