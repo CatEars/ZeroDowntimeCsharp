@@ -66,7 +66,7 @@ then that application generally needs to be able to run at least two instances a
 Open a powershell window and go into the `artifacts` folder.
 
 ```powershell
-> .\GreeterProxy.exe
+> .\GreeterProxy.exe --urls=https://localhost:8080
 ```
 
 The proxy will transparently forward a request to one of the GreeterServices.
