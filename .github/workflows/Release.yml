@@ -10,6 +10,11 @@ jobs:
     name: Create Release
     runs-on: windows-2019
     steps:
+      - uses: olegtarasov/get-tag@v2
+        id: tagName
+        with:
+          tagRegex: "v(.*)"
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -28,7 +33,7 @@ jobs:
       - name: Set Version
         run: .\build.ps1 -t Set-Version-CI
         env:
-          VERSION: ${{ github.ref }}
+          VERSION: ${{ steps.tagName.outputs.tag }}
 
       - name: Build Project
         run: .\build.ps1 -t Publish
@@ -42,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ steps.tagName.outputs.tag }}
+          release_name: Release ${{ steps.tagName.outputs.tag }}
           draft: false
           prerelease: false
 
@@ -54,8 +59,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Release-${{ github.ref }}-Client.zip
-          asset_name: ./Release-${{ github.ref }}-Client.zip
+          asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Client.zip
+          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Client.zip
           asset_content_type: application/zip
 
       - name: Upload Release Proxy
@@ -65,8 +70,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Release-${{ github.ref }}-Proxy.zip
-          asset_name: ./Release-${{ github.ref }}-Proxy.zip
+          asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Proxy.zip
+          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Proxy.zip
           asset_content_type: application/zip
 
       - name: Upload Release Service
@@ -76,6 +81,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Release-${{ github.ref }}-Service.zip
-          asset_name: ./Release-${{ github.ref }}-Service.zip
+          asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Service.zip
+          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Service.zip
           asset_content_type: application/zip
