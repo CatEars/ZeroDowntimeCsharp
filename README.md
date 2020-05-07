@@ -83,7 +83,7 @@ consequences of not having a proper deployment strategy.
 
 [Lab 1](./Lab1.md)
 
-# Lab 2 - Server Side Transparent Proxy
+# Lab 2 - Transparent Server Side Proxy
 
 In this lab we learn how we can deploy a transparent proxy that will allow us to
 do a Blue Green Deployment. After deploying we will do a Blue Green Deployment.

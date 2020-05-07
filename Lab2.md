@@ -1,4 +1,4 @@
-# Lab 2 - Server Side Transparent Proxy
+# Lab 2 - Transparent Server Side Proxy
 
 In this lab we will use the proxy to make the process of deploying a new version
 transparent, performing a Blue Green Deployment. We will also think about how a
@@ -57,9 +57,10 @@ For some applications it can be hard to duplicate a service like this. An
 example of this might be an application that uses [sticky
 sessions](https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-sessions).
 Another service might rely on in-memory data, which cannot easily be pushed to a
-database. Different applications have different needs, but generally most of
-them need to scale. If you want to deploy an application with zero downtime,
-then that application generally needs to be able to run at least two instances at the same time.
+database. Different applications have different needs, but most applications
+that have any users need a credible answer to the question "How does it scale?".
+If you want to deploy an application with zero downtime, then that application
+NEEDS to be able to run at least two instances at the same time.
 
 ## Start The Proxy
 
@@ -202,7 +203,8 @@ more gracefully? How could we verify that the old service is no longer in use by
 anyone? Is the strategy different if requests to our service are long lived, say
 2 hours? If we had a method for manually switching which service the proxy
 targets, would there be a benefit in keeping the old version running for a
-longer time before shutting it off?
+longer time before shutting it off? Is there a benefit to killing the running
+process as fast as possible?
 
 ## Start Another Instance of the New Version
 
@@ -221,3 +223,29 @@ architecture:
 <p align="center">
 <img alt="Architecture sketch" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Lab2-Architecture-Finished.PNG" />
 </p>
+
+At this point we have managed to migrate from our blue software version into a
+green software version. We have successfully managed to update our service
+without any visible downtime to the user.
+
+## Summary
+
+In this lab we have seen how a transparent proxy can allow us to reduce any
+downtime of a service to zero. We have pondered exactly what the necessary
+prerequisites for our software to use this type of deployment is.
+
+We have investigated how a circuit breaking policy allows us to start with one
+method and after multiple failures fail over to a secondary method. We have also
+thought about the reason why you might want to choose between a transparent
+proxy and an opaque proxy.
+
+We have seen that stopping one of the servers is not noticable from the
+perspective of the client. We have noted that with this kind of deployment it is
+possible to run some tests on the new version before we actually allow users to
+access it.
+
+This lab should illustrate to you a credible way of how a deployment can be made
+with zero downtime and fully convince you that a "simple" deployment is not
+necessarily the best deployment strategy.
+
+
