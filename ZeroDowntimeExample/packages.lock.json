@@ -176,6 +176,7 @@
           "Grpc.AspNetCore": "2.28.0"
         }
       }
-    }
+    },
+    ".NETCoreApp,Version=v3.1/win-x64": {}
   }
 }

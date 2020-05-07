@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  autobuild:
 
     runs-on: windows-2019
 
@@ -25,3 +25,4 @@ jobs:
           ${{ runner.os }}-nuget-
     - name: Publish
       run: .\build.ps1 -t Publish
+

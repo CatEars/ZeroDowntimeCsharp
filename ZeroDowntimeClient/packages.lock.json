@@ -200,6 +200,17 @@
           "Grpc.AspNetCore": "2.28.0"
         }
       }
+    },
+    ".NETCoreApp,Version=v3.1/win-x64": {
+      "Grpc.Core": {
+        "type": "Transitive",
+        "resolved": "2.28.1",
+        "contentHash": "UrNi6xxK6eaTtXsQqm0WpR70ivT+O2LOis6SCLgyok1BTSs/mgZy/fGjABguNT2WB1G4bE46uqAKmXoSBt7jSw==",
+        "dependencies": {
+          "Grpc.Core.Api": "2.28.1",
+          "System.Memory": "4.5.3"
+        }
+      }
     }
   }
 }

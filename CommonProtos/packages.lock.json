@@ -170,6 +170,7 @@
         "resolved": "4.5.1",
         "contentHash": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw=="
       }
-    }
+    },
+    ".NETCoreApp,Version=v3.1/win-x64": {}
   }
 }

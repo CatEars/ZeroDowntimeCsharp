@@ -1,0 +1,69 @@
+on:
+  push:
+    tags:
+    - 'v*'
+
+name: Create Release
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: windows-2019
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set Version
+        uses: .\build.ps1 -t Set-Version-CI
+        env:
+          VERSION: ${{ github.ref }}
+
+      - name: Build Project
+        run: .\build.ps1 -t Publish
+
+      - name: Create Release Artifacts
+        run: .\build.ps1 -t Zip-Release-Assets
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Client
+        id: upload-release-client
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Release-${{ github.ref }}-Client.zip
+          asset_name: ./Release-${{ github.ref }}-Client.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Proxy
+        id: upload-release-proxy
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Release-${{ github.ref }}-Proxy.zip
+          asset_name: ./Release-${{ github.ref }}-Proxy.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Service
+        id: upload-release-service
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Release-${{ github.ref }}-Service.zip
+          asset_name: ./Release-${{ github.ref }}-Service.zip
+          asset_content_type: application/zip

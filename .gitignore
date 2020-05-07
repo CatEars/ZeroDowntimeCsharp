@@ -7,3 +7,4 @@ Debug
 tools/**
 !tools/packages.config
 artifacts
+Release-*.zip
