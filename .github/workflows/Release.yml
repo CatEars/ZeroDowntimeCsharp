@@ -60,7 +60,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Client.zip
-          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Client.zip
+          asset_name: Release-${{ steps.tagName.outputs.tag }}-Client.zip
           asset_content_type: application/zip
 
       - name: Upload Release Proxy
@@ -71,7 +71,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Proxy.zip
-          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Proxy.zip
+          asset_name: Release-${{ steps.tagName.outputs.tag }}-Proxy.zip
           asset_content_type: application/zip
 
       - name: Upload Release Service
@@ -82,5 +82,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./Release-${{ steps.tagName.outputs.tag }}-Service.zip
-          asset_name: ./Release-${{ steps.tagName.outputs.tag }}-Service.zip
+          asset_name: Release-${{ steps.tagName.outputs.tag }}-Service.zip
           asset_content_type: application/zip
