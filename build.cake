@@ -93,7 +93,7 @@ Task("Zip-Release-Assets")
 
 Task("Set-Version-CI")
     .Does(() => {
-        var version = EnvironmentVariable("VERSION");
+        var version = EnvironmentVariable("VERSION").Replace("refs/tags/", "");
         FileWriteText("./version.txt", version);
     });
 
