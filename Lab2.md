@@ -245,7 +245,10 @@ possible to run some tests on the new version before we actually allow users to
 access it.
 
 This lab should illustrate to you a credible way of how a deployment can be made
-with zero downtime and fully convince you that a "simple" deployment is not
-necessarily the best deployment strategy.
+with zero downtime and fully convince you that a "simple" deployment lacks a lot
+of valuable properties compared to the deployment done in this lab.
+
+In the next lab we will investigate how we can get a similar behavior by
+building this functionality into the client itself.
 
 
