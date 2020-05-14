@@ -77,7 +77,7 @@ it to be. We need to redeploy our service with a changed configuration.
 To do this, stop the currently running server and rerun it with
 
 ```powershell
-> .\GreeterService.exe --greeting=Greetings
+> .\GreeterService.exe --urls=https://localhost:8080 --greeting=Greetings
 ```
 
 Can you do it without the original program crashing? What happens if you do not
@@ -99,7 +99,7 @@ are dependent systems affected by an upgrade like this?
 If this is a medical system, what could the consequences be if the service takes
 longer than expected to get up and running? What if it was a crucial piece of
 software for the national defense? Or the police? If something goes wrong, how
-can that be effectively communicated?
+can that be effectively communicated to the users of the system?
 
 <p align="center">
 <img alt="Warning" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Warning.PNG" />
@@ -111,8 +111,10 @@ Assume we have a much larger application, which takes more time to configure. We
 have tried our best configuring the upgraded version of the app, but we know
 that we will not be able to complete the upgrade on time. How easy or hard would
 it be to revert to the old version? What if we have already started the upgraded
-version, but found out it was poorly configured, how would we fix the
-configuration with minimal disruption?
+version and it has been running for a day, but found out it was poorly
+configured, how would we fix the configuration with minimal disruption? How will
+the end users be affected by the change in configuration? Does the change need
+to be coordinated?
 
 <p align="center">
 <img alt="QuestionMark" src="https://raw.githubusercontent.com/CatEars/ZeroDowntimeCsharp/master/Pictures/Question.PNG" />
@@ -122,7 +124,8 @@ configuration with minimal disruption?
 
 Is there a way to test that the application works like it should before we
 deploy it? If we run the application on one port and try it, are we guaranteed
-that it will work once we reconfigure it to replace the old version?
+that it will work once we reconfigure it to replace the old version? What if
+configuring the "test version" is much harder than changing a single line?
 
 # Summary
 
@@ -133,7 +136,8 @@ disruption can for some applications be an impossibility.
 We have reflected over the ways a "simple" deployment might cost more overall
 time because of the coordination effort involved in managing dependent users and
 services. We have also reflected over how to properly test a new version and how
-that might not be possible if the current version of the application is running.
+that we might only achieve "best effort testing" if the old version of the
+application is running.
 
 This lab should convince you that there are better and more flexible ways to
 deploy than using a "simple" deployment strategy.
@@ -143,7 +147,4 @@ a Blue Green Deployment. This will allow us to upgrade with zero downtime. We
 will also read about an example of how we could test our service before it is
 brought online.
 
-In the third lab we will change the client to automatically failover between a
-primary and secondary service. This will allow us to upgrade with zero downtime
-using a Blue Green Deployment. We will also compare the pros and cons of a
-server side transparent proxy with a client that does automatic failover.
+Go to [Lab2.md here](./Lab2.md)

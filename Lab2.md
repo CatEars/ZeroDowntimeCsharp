@@ -17,8 +17,8 @@ proxy might be useful if we want to test our application before "going live".
 </p>
 
 The architecture for this example is a bit more complex, but still quite simple.
-We have a client, that one is working in the exact same way as before. No
-changes what so ever.
+We have a client. The client is working in the exact same way as in Lab 1. No
+changes.
 
 On the server side, however, we have duplicated the service and added a proxy in
 front of the services. The proxy contains a circuit breaker. If the current
@@ -59,7 +59,7 @@ sessions](https://stackoverflow.com/questions/10494431/sticky-and-non-sticky-ses
 Another service might rely on in-memory data, which cannot easily be pushed to a
 database. Different applications have different needs, but most applications
 that have any users need a credible answer to the question "How does it scale?".
-If you want to deploy an application with zero downtime, then that application
+If you want to upgrade an application with zero downtime, then that application
 NEEDS to be able to run at least two instances at the same time.
 
 ## Start The Proxy
@@ -133,9 +133,9 @@ yet again. This time you will use the short and simple greeting "Hi". However,
 she has told you that this change cannot disrupt the running business. Luckily,
 you have been smart in your deployment and are set for an easy task.
 
-Start by stopping either of the servers. Try and stop the one the proxy is using
+Start with stopping either of the servers. Try and stop the one the proxy is using
 and witness how it switches over to another service. Also notice how, at the
-client, the only difference is that the request seems to take a little bit
+client, the only difference is that a single request seems to take a little bit
 longer. 
 
 At this point we have the following architecture up and running:
@@ -248,7 +248,11 @@ This lab should illustrate to you a credible way of how a deployment can be made
 with zero downtime and fully convince you that a "simple" deployment lacks a lot
 of valuable properties compared to the deployment done in this lab.
 
-In the next lab we will investigate how we can get a similar behavior by
-building this functionality into the client itself.
+After having done both of these labs you should have a firm grasp of a practical
+way to implement a Blue Green Deployment. You should also understand that the
+most straightforward way of deploying and upgrading software might come with
+several downsides, which a change in architecture could solve. It should also be
+clear to you that this change in architecture is not necessarily a huge
+undertaking.
 
 
